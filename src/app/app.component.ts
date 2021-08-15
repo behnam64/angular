@@ -1,7 +1,9 @@
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
-import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, Inject, NgZone, PLATFORM_ID } from '@angular/core';
+import { Plugins } from '@capacitor/core';
+const { App } = Plugins;
 
 @Component({
   selector: 'app-root',
@@ -18,14 +20,27 @@ export class AppComponent {
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private _router: Router,
+    private _zone: NgZone,
   ) {
     this.removeSplashScreen();
   }
 
   ngOnInit() {
+    this.initializeApp()
     this.removeSplashScreen();
     this.handleRoute();
     this._router.events.takeUntil(this.unSubscribe$).subscribe(this.handleRoute.bind(this));
+  }
+
+  initializeApp() {
+    App.addListener('appUrlOpen', (data: any) => {
+      this._zone.run(() => {
+        const slug = data.url.split("com.abidarcity.android://")[1];
+        if(slug) {
+          this._router.navigateByUrl(`/${slug}`);
+        }
+      });
+    });
   }
 
   removeSplashScreen(): void {
