@@ -1,0 +1,44 @@
+@import "./variables.scss";
+
+.no-connection {
+  &__container {
+    min-height: 100vh;
+    padding: 2rem;
+    padding-top: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+  }
+
+  &__icon {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  &__text {
+    font-size: 1.3rem;
+    font-family: iranSans_bold;
+    width: 100%;
+    text-align: center;
+    margin-top: 3rem;
+  }
+  
+  &__link {
+    font-size: 1.3rem;
+    padding: 0.8rem 5rem;
+    border-radius: 20rem;
+    color: white !important;
+    background-color: lightblue;
+    margin-top: 3rem;
+    font-family: iranSans_bold;
+  }
+}
+
+// body.dark-theme {
+// & .no-connection {
+//   &__text {
+//   }
+// }
+// }

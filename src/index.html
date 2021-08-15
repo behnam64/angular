@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <base href="/">
+
+  <meta name="viewport" content="width=190px, initial-scale=1">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- seo meta tags -->
+  <title>title</title>
+  <meta name="description" content="title">
+  <meta name="thumbnail" content="/assets/images/image.png">
+  <meta property="og:title" content="title">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/assets/images/image.png">
+  <meta property="og:description" content="title">
+  <meta name="twitter:title" content="title">
+  <meta name="twitter:image" content="/assets/images/image.png">
+  <meta name="twitter:description" content="title">
+  <meta name="robots" content="index, follow">
+  <meta name="revisit-after" content="3 days">
+
+  <style>
+    @font-face { font-family: 'IranSans'; font-display: block; src: url('assets/iransans/IRANSansXFaNum-Regular.woff'); font-weight: normal; font-style: normal;}
+    @font-face { font-family: 'IranSans_bold'; font-display: block; src: url('assets/iransans/IRANSansXFaNum-Bold.woff'); font-weight: normal; font-style: normal;}
+  </style>
+
+  <!-- pwa meta tags -->
+  <!-- <meta name="theme-color" content="#ffffff"> -->
+  <!-- <meta name="msapplication-navbutton-color" content="#d82020">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#d82020"> -->
+  <!-- <meta name="msapplication-TileColor" content="#d82020"/> -->
+  <meta name="msapplication-square150x150logo" content="/assets/mediumtile.png"/>
+  <meta name="msapplication-config" content="none"/>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon-16.png">
+  <link rel="mask-icon" href="/assets/safari-pinned-tab.svg">
+  <link rel="manifest" href="manifest.webmanifest">
+
+  <!-- change default scroll bar -->
+  <style>
+    html, body {
+      line-height: 1.5; 
+      color: #444;
+      margin: 0;
+      font-family: "IranSans", Roboto, "Helvetica Neue", sans-serif, "IranSans_bold" !important;
+    }
+    html {
+      -webkit-overflow-scrolling: touch;  
+      overflow-y: scroll;
+      font-size: 16px;
+    }
+    body {
+      min-height: 100%;
+    }
+    html, body {
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      font-family: Roboto, "Helvetica Neue", sans-serif;
+    }
+    body.dark-theme {
+      background-color: #181818;
+    }
+    .scroll-bar body {
+      scrollbar-width: auto;
+      scrollbar-color: #999 transparent;
+    }
+    .scroll-bar body::-webkit-scrollbar {
+      width: 0.7rem;
+      height: 0.7rem;
+    }
+    .scroll-bar body::-webkit-scrollbar-track {
+      background: #eee;
+    }
+    .scroll-bar body::-webkit-scrollbar-thumb {
+      background: #999;
+    }
+    .scroll-bar body::-webkit-scrollbar-thumb:hover {
+      background: #777;
+    }
+    .scroll-bar body * {
+      scrollbar-width: thin;
+      scrollbar-color: #999 transparent;
+    }
+    .scroll-bar body * ::-webkit-scrollbar {
+      width: 0.3rem;
+      height: 0.3rem;
+    }
+    .scroll-bar body * ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .scroll-bar body * ::-webkit-scrollbar-thumb {
+      background: #999;
+    }
+    .scroll-bar body * ::-webkit-scrollbar-thumb:hover {
+      background: #777;
+    }
+
+    .scroll-bar body.dark-theme {
+      scrollbar-width: auto;
+      scrollbar-color: #666 transparent;
+    }
+    .scroll-bar body.dark-theme::-webkit-scrollbar {
+      width: 0.7rem;
+      height: 0.7rem;
+    }
+    .scroll-bar body.dark-theme::-webkit-scrollbar-track {
+      background: #202020;
+    }
+    .scroll-bar body.dark-theme::-webkit-scrollbar-thumb {
+      background: #454545;
+    }
+    .scroll-bar body.dark-theme::-webkit-scrollbar-thumb:hover {
+      background: #666;
+    }
+    .scroll-bar body.dark-theme * {
+      scrollbar-width: thin;
+      scrollbar-color: #666 transparent;
+    }
+    .scroll-bar body.dark-theme * ::-webkit-scrollbar {
+      width: 0.3rem;
+      height: 0.3rem;
+    }
+    .scroll-bar body.dark-theme * ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .scroll-bar body.dark-theme * ::-webkit-scrollbar-thumb {
+      background: #454545;
+    }
+    .scroll-bar body.dark-theme * ::-webkit-scrollbar-thumb:hover {
+      background: #666;
+    }
+
+    body {
+      height: 100rem;
+    }
+  </style>
+  <style id="fontsize-styles">
+  </style>
+
+  <!-- reseting the default increase of font size in some browsers -->
+  <script>
+    if(window) {
+      function fontsize() {
+        let size = window.getComputedStyle(Array.from(document.getElementsByTagName("html"))[0]).fontSize;
+        size = parseInt(size.split("px")[0]);
+        size = 16 / size;
+        let style = `
+          html {
+            font-size: ${Math.floor(16 * size)}px;
+          }
+          @media only screen and (max-width: 700px) {
+            html {font-size: ${Math.floor(15 * size)}px;}
+          }
+          @media only screen and (max-width: 344px) {
+            html {font-size: ${Math.floor(14 * size)}px;}
+          }
+          @media only screen and (max-width: 322px) {
+            html {font-size: ${Math.floor(13 * size)}px;}
+          }
+          @media only screen and (max-width: 299px) {
+            html {font-size: ${Math.floor(12 * size)}px;}
+          }
+          @media only screen and (max-width: 276px) {
+            html {font-size: ${Math.floor(11 * size)}px;}
+          }
+          @media only screen and (max-width: 253px) {
+            html {font-size: ${Math.floor(10 * size)}px;}
+          }
+          @media only screen and (max-width: 230px) {
+            html {font-size: ${Math.floor(9 * size)}px;}
+          }
+          @media only screen and (max-width: 207px) {
+            html {font-size: ${Math.floor(8 * size)}px;}
+          }
+        `;
+        document.getElementById("fontsize-styles").innerHTML = style;
+      }
+      fontsize();
+      function get() {
+        var userAgent = window.navigator.userAgent,
+            platform = window.navigator.platform,
+            macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+            windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+            iosPlatforms = ['iPhone', 'iPad', 'iPod'],
+            os = null;
+      
+        if (macosPlatforms.indexOf(platform) !== -1) {
+          os = 'Mac OS';
+        } else if (iosPlatforms.indexOf(platform) !== -1) {
+          os = 'iOS';
+        } else if (windowsPlatforms.indexOf(platform) !== -1) {
+          os = 'Windows';
+        } else if (/Android/.test(userAgent)) {
+          os = 'Android';
+        } else if (!os && /Linux/.test(platform)) {
+          os = 'Linux';
+        }
+        return os;
+      }
+      var os = get();
+      if(os === 'Mac OS' || os === 'Windows' || os === 'Linux') {
+        var element = Array.from(document.getElementsByTagName("html"));
+        element[0].classList.add("scroll-bar");
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- forpreloading fonts -->
+  <div style="position: fixed; top: -1000rem; font-family: IranSans_bold;">test</div>
+  <div style="position: fixed; top: -1000rem; font-family: IranSans;">test</div>
+
+  <!-- splash screen -->
+  <div id="splash-logo-container" style="position: fixed; top: 0; left: 0; display: flex; justify-content: center; align-items: center; height: 100%; width: 100%; background-color: white; z-index: 100000000000;">
+    <svg id="splash-logo" style="width: 12rem; fill: lightblue;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 492 492" style="enable-background:new 0 0 492 492;" xml:space="preserve"><g><g><path d="M198.608,246.104L382.664,62.04c5.068-5.056,7.856-11.816,7.856-19.024c0-7.212-2.788-13.968-7.856-19.032l-16.128-16.12C361.476,2.792,354.712,0,347.504,0s-13.964,2.792-19.028,7.864L109.328,227.008c-5.084,5.08-7.868,11.868-7.848,19.084c-0.02,7.248,2.76,14.028,7.848,19.112l218.944,218.932c5.064,5.072,11.82,7.864,19.032,7.864c7.208,0,13.964-2.792,19.032-7.864l16.124-16.12c10.492-10.492,10.492-27.572,0-38.06L198.608,246.104z"/></g></g></svg>
+  </div>
+
+  <app-root></app-root>
+  <noscript>لطفا برای استفاده از این برنامه جاوا اسکریپت را فعال کنید</noscript>
+</body>
+</html>

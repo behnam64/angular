@@ -1,0 +1,30 @@
+<div class="user-card" *ngFor="let speaker_item of speakers">
+
+  <!-- arrow button -->
+  <button class="user-card__arrow-button" (click)="!speakerSessions.id || speakerSessions.id !== speaker_item.id ? getSpeakerSessions(speaker_item.id) : speakerSessions = {id: '', list: []};">
+    <app-icon-left-arrow className="user-card__arrow-icon"></app-icon-left-arrow>
+  </button>
+
+  <!-- card content -->
+  <div class="user-card__content">
+
+    <!-- title and detail tooltip -->
+    <div class="user-card__title" (mouseenter)="getSpeakerDetail(speaker_item.id)">
+      <p class="user-card__title--text">{{ speaker_item.data[0].value }}</p>
+      <div class="user-card__tooltip">
+        <mat-spinner class="user-card__tooltip--spinner" *ngIf="!speakerDetail.value"></mat-spinner>
+        <p class="user-card__tooltip--text" *ngIf="speakerDetail.value">{{ speakerDetail.value }}</p>
+      </div>
+    </div>
+
+    <!-- list of sessions -->
+    <div  class="user-card__sessions" *ngIf="speakerSessions.id && speakerSessions.id === speaker_item.id">
+      <mat-spinner class="user-card__tooltip--spinner" *ngIf="isLoadingSpeakerSessions"></mat-spinner>
+      <div class="user-card__sessions--list" *ngFor="let speaker_session_item of speakerSessions.list">
+        <div class="user-card__sessions--data" *ngFor="let speaker_session_data of speaker_session_item.data">{{ speaker_session_data.value }}</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
