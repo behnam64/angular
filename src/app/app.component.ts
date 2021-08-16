@@ -1,9 +1,8 @@
+import { App } from '@capacitor/app';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import { Component, Inject, NgZone, PLATFORM_ID } from '@angular/core';
-import { Plugins } from '@capacitor/core';
-const { App } = Plugins;
 
 @Component({
   selector: 'app-root',

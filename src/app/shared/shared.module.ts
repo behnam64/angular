@@ -15,6 +15,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { HttpClientModule } from '@angular/common/http';
 import { MatRippleModule } from '@angular/material/core';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { MatRippleModule } from '@angular/material/core';
     MatDialogModule,
     SliderModule,
     MatRippleModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatCheckboxModule,
   ],
   exports: [
     CommonModule,
@@ -51,7 +53,8 @@ import { MatRippleModule } from '@angular/material/core';
     OnlyNumberDirective,
     ResultDialogComponent,
     MatRippleModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatCheckboxModule,
   ]
 })
 

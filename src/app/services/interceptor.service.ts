@@ -42,8 +42,8 @@ export class InterceptorService implements HttpInterceptor {
 			withCredentials: true
 		});
 
+		console.log("log", window.navigator.onLine)
 		this._subjectService.isOnline = window.navigator.onLine;
-
 		if(!window.navigator.onLine) {
 			this._router.navigate(["/", "no-connection"]);
 		}

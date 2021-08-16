@@ -12,9 +12,13 @@ import { speakerDetailInterface, speakerInterface, speakerSessionsInterface } fr
 export class HomeComponent {
 
   speakers: speakerInterface[] = [];
+  speakersData: speakerInterface[] = [];
   speakerDetail: speakerDetailInterface = {id: "", value: ""};
   speakerSessions: speakerSessionsInterface = {id: "", list: []};
   isLoadingSpeakerSessions = false;
+
+  bulkEditData: {ids: string[], text: string} = {ids: [], text: ""};
+  searchText: string = "";
 
   constructor(
     private _meta: Meta,
@@ -47,7 +51,7 @@ export class HomeComponent {
         el.id = url[url.length - 1];
       });
       this.speakers = response.collection.items;
-      console.log(response.collection.items)
+      this.speakersData = response.collection.items;
     })
   }
 
@@ -66,6 +70,45 @@ export class HomeComponent {
     this._homeApiService.getSpeakerSessions(id).subscribe(response => {
       this.isLoadingSpeakerSessions = false;
       this.speakerSessions = {id: id, list: response.collection.items};
+    });
+  }
+
+  bulkEdit() {
+    if(!this.bulkEditData.text) {
+      this.speakersData.forEach(el => {
+        if(el.data[0].is_checked) {
+          this.bulkEditData.ids.push(el.id);
+          if(this.bulkEditData.text) {
+            this.bulkEditData.text += "\n";
+            this.bulkEditData.text += el.data[0].value;
+          } else {
+            this.bulkEditData.text += el.data[0].value;
+          }
+        }
+      });
+    }
+  }
+
+  verifyBulkEdit() {
+    let text: string[] = this.bulkEditData.text.split("\n");
+    this.bulkEditData.ids.forEach((id, i) => {
+      this.speakersData.forEach(speaker => {
+        if(speaker.id === id) {
+          speaker.data[0].value = text[i] ? text[i] : "";
+        }
+      });
+    });
+    this.bulkEditData = {ids: [], text: ""};
+  }
+
+  speakersSearch() {
+    this.speakers = [];
+    this.speakersData.forEach(el => {
+      el.data[0].is_checked = false;
+      el.data[0].is_editing = false;
+      if(el.data[0].value.toLocaleLowerCase().search(this.searchText.toLowerCase()) !== -1) {
+        this.speakers.push(el);
+      }
     })
   }
 }

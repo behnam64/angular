@@ -3,7 +3,9 @@ export interface speakerInterface {
   href: string,
   data: {
     name: string,
-    value: string
+    value: string,
+    is_editing: boolean,
+    is_checked: boolean,
   }[]
 };
 

@@ -1,3 +1,123 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 0 0.7rem rgba(0,0,0,0.2);
+  z-index: 100;
+  padding: 1.5rem;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  &__search {
+    position: relative;
+    width: 30rem;
+    height: 3rem;
+
+    &--input {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      border: 0.2rem solid lightblue;
+      background-color: transparent;
+      outline: none !important;
+      font-size: 1rem;
+      border-radius: 20rem;
+      padding-right: 4rem;
+      padding-left: 2rem;
+    }
+
+    &--button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3rem;
+      height: 3rem;
+      background-color: transparent;
+      border: none;
+      outline: none !important;
+    }
+
+    &--icon {
+      width: 1.5rem;
+      height: 1.5rem;
+      fill: #999;
+    }
+  }
+
+  &__edit {
+    position: relative;
+    width: 39rem;
+
+    &--button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: darken(lightblue, 30%);
+      color: white;
+      font-size: 1rem;
+      border: none;
+      height: 3rem;
+      width: 7rem;
+      margin-left: 2rem;
+      border-radius: 20rem;
+      outline: none !important;
+      
+      &--disabled {
+        opacity: 0.5;
+      }
+    }
+
+    &--input {
+      width: 100%;
+      padding: 0.5rem 1rem;
+      padding-right: 3rem;
+      border: 1px solid #999;
+      background-color: transparent;
+      outline: none !important;
+      margin-top: 1.5rem;
+      border-radius: 1rem;
+      color: #444;
+      max-height: 20rem;
+    }
+
+    &--check {
+      position: absolute;
+      top: 1.7rem;
+      right: 0.7rem;
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      border: none;
+      outline: none !important;
+    }
+
+    &--icon {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+  }
+
+}
+
 .user-card {
   position: relative;
   display: flex;
@@ -46,6 +166,11 @@
     height: 1rem;
     transform: rotate(-90deg);
     margin-top: 0.6rem;
+    transition: 0.3s;
+
+    &--active {
+      transform: rotate(90deg);
+    }
   }
 
   &__content {
@@ -63,8 +188,46 @@
       font-weight: bold;
       margin: 0;
     }
+
     &:hover .user-card__tooltip {
       visibility: visible !important;
+    }
+  }
+  
+  &__input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 4rem;
+    width: 50%;
+
+    &--input {
+      background-color: transparent;
+      border: 0.2rem solid lightblue;
+      padding: 0.5rem 1rem;
+      border-radius: 20rem;
+      outline: none !important;
+      width: 100%;
+    }
+
+    &--button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 1rem;
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      border: none;
+      outline: none !important;
+    }
+
+    &--icon {
+      width: 1.2rem;
+      height: 1.2rem;
     }
   }
 
@@ -131,6 +294,9 @@
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
+      &:last-child {
+        margin-bottom: 1rem;
+      }
     }
 
     &--data {
@@ -148,6 +314,10 @@ body.dark-theme {
   }
 }
 
+body {
+  padding-top: 5rem;
+}
+
 .scroll-bar body .home__side--container::-webkit-scrollbar {
   width: 0.6rem;
   height: 0.6rem;
@@ -155,4 +325,13 @@ body.dark-theme {
 .scroll-bar body.dark-theme .home__side--container::-webkit-scrollbar {
   width: 0.6rem;
   height: 0.6rem;
+}
+
+.mat-checkbox {
+  margin-right: 0.7rem;
+  transform: translateY(-0.2rem);
+}
+
+.mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: darken(lightblue, 30%);
 }
