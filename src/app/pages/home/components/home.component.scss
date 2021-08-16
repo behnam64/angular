@@ -187,11 +187,11 @@
     &--text {
       font-weight: bold;
       margin: 0;
+      &:hover + .user-card__tooltip {
+        visibility: visible !important;
+      }
     }
 
-    &:hover .user-card__tooltip {
-      visibility: visible !important;
-    }
   }
   
   &__input {

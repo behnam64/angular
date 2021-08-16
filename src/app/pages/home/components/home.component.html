@@ -35,9 +35,9 @@
   <div class="user-card__content">
 
     <!-- title and detail tooltip -->
-    <div class="user-card__title" (mouseenter)="getSpeakerDetail(speaker_item.id)" *ngIf="!speaker_item.data[0].is_editing">
+    <div class="user-card__title" *ngIf="!speaker_item.data[0].is_editing">
       <mat-checkbox [(ngModel)]="speaker_item.data[0].is_checked"></mat-checkbox>
-      <p class="user-card__title--text" (click)="speaker_item.data[0].is_editing = true">{{ speaker_item.data[0].value }}</p>
+      <p class="user-card__title--text" (click)="speaker_item.data[0].is_editing = true" (mouseenter)="getSpeakerDetail(speaker_item.id)">{{ speaker_item.data[0].value }}</p>
       <div class="user-card__tooltip">
         <mat-spinner class="user-card__tooltip--spinner" *ngIf="!speakerDetail.value"></mat-spinner>
         <p class="user-card__tooltip--text" *ngIf="speakerDetail.value">{{ speakerDetail.value }}</p>
